@@ -4,7 +4,7 @@ from matplotlib import animation, rc
 from IPython.display import HTML
 plt.rcParams['figure.figsize'] = [8, 8]
 plt.rcParams.update({'font.size': 18})
-plt.rcParams['animation.html'] = 'jshtml'
+#plt.rcParams['animation.html'] = 'jshtml'
 
 dx = 0.01
 L = 10
@@ -40,8 +40,10 @@ def animate(iter):
     fFS_plot.set_data(x, all_fFS[:, iter])
     return fFS_plot
 
-anim = animation.FuncAnimation(fig, animate, init_func=init, frames=101, interval=500)
-HTML(anim.to_jshtml())
 
+anim = animation.FuncAnimation(fig, animate, init_func=init, frames=101, interval=100, repeat=False)
+#HTML(anim.to_jshtml())
+plt.show()
+anim.save('gibbs-phenomenon.gif', writer='imagemagick')
 
 
